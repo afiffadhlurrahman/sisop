@@ -1,0 +1,17 @@
+// char *binaryPath = "/usr/bin/wget";
+    // char *argv[] = {binaryPath,"-P","/home/afif/sisop/shift2/", "https://picsum.photos/200", NULL};
+	// execv(binaryPath, argv);
+
+    // char b[]="/home/afif/sisop/shift2/";
+	// char *binaryPath = "/usr/bin/wget";
+    // char *argv[] = {binaryPath,"-P",b, "https://picsum.photos/200", NULL};
+    // execv(binaryPath, argv);
+    
+    
+	char *binaryPath = "/bin/touch";
+    char *argv[] = {binaryPath,"1" , NULL};
+    execv(binaryPath, argv);
+    
+
+    //system("wget -P /home/afif/sisop/shift2/ https://picsum.photos/300 ");
+    
