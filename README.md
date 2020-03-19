@@ -1,3 +1,3 @@
 # Semangat sisop
 
-![GitHub Logo](sisop/images/logo.png)
+![GitHub Logo](/images/logo.png)
