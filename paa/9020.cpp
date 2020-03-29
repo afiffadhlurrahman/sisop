@@ -52,6 +52,7 @@ long long int solve(LL array[], LL n, LL k)
 
 int main() 
 { 
+	
 	LL n; 
 	LL k; 
 	scanf("%lld %lld",&n,&k);
@@ -60,5 +61,4 @@ int main()
 		scanf("%lld",&array[i]);
 	}
 	printf("%lld\n",solve(array, n, k));
-} 
-
+}
