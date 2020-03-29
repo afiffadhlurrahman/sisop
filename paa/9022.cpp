@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm> 
-using namespace std; 
+using namespace std;
 typedef long long int LL;
 
 LL countLessThan(LL arr[], LL n, LL key) 
@@ -9,7 +9,7 @@ LL countLessThan(LL arr[], LL n, LL key)
 	LL index = -1; 
  
 	while (l <= r) { 
-		int m = (l + r) / 2; 
+		LL m = (l + r) / 2; 
 
 		if (arr[m] < key) { 
 			l = m + 1; 
@@ -55,7 +55,6 @@ LL countTriplets(LL n, LL* a, LL* b, LL* c)
 
 	for (LL i = 0; i < n; ++i) { 
 		LL current = b[i]; 
-		LL a_index = -1, c_index = -1; 
 
 		LL low = countLessThan(a, n, current); 
 		LL high = countGreaterThan(c, n, current); 
@@ -68,9 +67,7 @@ LL countTriplets(LL n, LL* a, LL* b, LL* c)
 
 int main() 
 { 
-	LL a[100000]; 
-	LL b[100000]; 
-	LL c[100000]; 
+	LL a[100000], b[100000], c[100000]; 
 	LL size; 
 	
 	scanf("%lld",&size);
