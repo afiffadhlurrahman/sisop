@@ -1,7 +1,11 @@
-#include <bits/stdc++.h> 
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#define maxNum (LL)(1e18) 
+ 
 using namespace std; 
 typedef long long int LL;
-#define maxNum (int)(1e8) 
+
 vector<LL> v; 
   
 void precompute() 
@@ -25,19 +29,16 @@ void precompute()
   
 void countNum(LL l, LL r) 
 { 
-    cout << upper_bound(v.begin(), v.end(), r) - upper_bound(v.begin(), v.end(), l - 1) << endl; 
+    printf("%lld\n",upper_bound(v.begin(), v.end(), r) - upper_bound(v.begin(), v.end(), l - 1));
 } 
 
 int main() 
 { 
     LL l, r; 
-  	
-  	while(scanf("%lld %lld",&l,&r) != EOF){
-  		memset(&v[0], 0, sizeof(v[0]) * v.size());
-  		precompute(); 
-		countNum(l, r); 
-		//printf("%lld %lld\n",l,r); 
-	}
+    precompute(); 
+    while(scanf("%lld %lld",&l,&r) != EOF){
+	countNum(l, r); 
+    }
     
     return 0; 
 }
