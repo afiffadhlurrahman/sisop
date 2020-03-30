@@ -1,0 +1,82 @@
+#include<iostream>
+using namespace std;
+typedef long long int LL;
+
+LL count(LL x){
+	LL num = 0;
+	while(x>0){
+		x /= 10;
+		num++;
+	}
+	return num;
+}
+
+LL lower(LL x){
+	x = 2 << (x-1);
+	return x-1;
+}
+
+LL upper(LL x){
+	x = 2 << x;
+	return x-1;
+}
+
+LL printNthElement(LL n) 
+{ 
+	LL arr[n+1]; 
+	arr[1] = 4; 
+	arr[2] = 7; 
+
+	for (LL i=3; i<=n; i++) 
+	{ 
+		if (i%2 != 0) 
+			arr[i] = arr[i/2]*10 + 4; 
+		else
+			arr[i] = arr[(i/2)-1]*10 + 7; 
+	} 
+	return arr[n]; 
+} 
+
+LL power(LL x,LL y, LL p)  
+{  
+    LL res = 1;
+  
+    x = x % p; 
+    
+    if (x == 0) return 0; 
+    
+    while (y > 0)  
+    {  
+        if (y & 1)  
+            res = (res*x) % p;  
+            
+        y = y>>1;
+        x = (x*x) % p;  
+    }  
+    return res;  
+}  
+
+int main(){
+	LL low,up,finLow,finUp,arr[524289],check,flag=0;
+	scanf("%lld %lld",&low,&up);
+	
+	finLow = count(low);
+	finUp = count(up);
+	finLow = lower(finLow);
+	finUp = upper(finUp);
+	
+	//printf("%lld %lld\n",low,up);
+	for(LL i=finLow;i<finUp;i++){
+		check = printNthElement(i);
+		if(check >= low && check <= up){
+			arr[flag] = check;
+			flag++;
+		} 
+	}
+	LL sum = 0;
+	for(LL j=0;j<flag;j++){
+		sum += power(arr[j],arr[j],1234567891);
+	}
+	printf("%lld\n",sum%1234567891);
+	return 0;
+}
