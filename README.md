@@ -1,7 +1,7 @@
 # Semangat sisop
 
 ![GitHub Logo](/images/logo.png)
-[No 1](#no-1)
+[no 1](#no-1)
 
 hahaha
 
