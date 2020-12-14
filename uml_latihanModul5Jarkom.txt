@@ -10,7 +10,7 @@ uml_switch -unix switch8 > /dev/null < /dev/null &
 uml_switch -unix switch9 > /dev/null < /dev/null &
 
 # Router
-xterm -T SURABAYA -e linux ubd0=SURABAYA,jarkom umid=SURABAYA eth0=tuntap,,,10.151.70.9 eth1=daemon,,,switch1 eth2=daemon,,,switch2 eth3=daemon,,,switch3 mem=64M &
+xterm -T SURABAYA -e linux ubd0=SURABAYA,jarkom umid=SURABAYA eth0=tuntap,,,10.151.78.9 eth1=daemon,,,switch1 eth2=daemon,,,switch2 eth3=daemon,,,switch3 mem=64M &
 xterm -T BATU -e linux ubd0=BATU,jarkom umid=BATU eth0=daemon,,,switch1 eth1=daemon,,,switch6 eth2=daemon,,,switch7 eth3=daemon,,,switch8 mem=64M &
 xterm -T KEDIRI -e linux ubd0=KEDIRI,jarkom umid=KEDIRI eth0=daemon,,,switch3 eth1=daemon,,,switch4 eth2=daemon,,,switch5 eth3=daemon,,,switch9 mem=64M &
 
