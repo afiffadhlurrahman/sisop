@@ -1,0 +1,152 @@
+# Switch
+uml_switch -unix switch1 > /dev/null < /dev/null &
+uml_switch -unix switch2 > /dev/null < /dev/null &
+uml_switch -unix switch3 > /dev/null < /dev/null &
+uml_switch -unix switch4 > /dev/null < /dev/null &
+uml_switch -unix switch5 > /dev/null < /dev/null &
+uml_switch -unix switch6 > /dev/null < /dev/null &
+uml_switch -unix switch7 > /dev/null < /dev/null &
+uml_switch -unix switch8 > /dev/null < /dev/null &
+uml_switch -unix switch9 > /dev/null < /dev/null &
+
+# Router
+xterm -T SURABAYA -e linux ubd0=SURABAYA,jarkom umid=SURABAYA eth0=tuntap,,,10.151.70.9 eth1=daemon,,,switch1 eth2=daemon,,,switch2 eth3=daemon,,,switch3 mem=64M &
+xterm -T BATU -e linux ubd0=BATU,jarkom umid=BATU eth0=daemon,,,switch1 eth1=daemon,,,switch6 eth2=daemon,,,switch7 eth3=daemon,,,switch8 mem=64M &
+xterm -T KEDIRI -e linux ubd0=KEDIRI,jarkom umid=KEDIRI eth0=daemon,,,switch3 eth1=daemon,,,switch4 eth2=daemon,,,switch5 eth3=daemon,,,switch9 mem=64M &
+
+# Server
+xterm -T MALANG -e linux ubd0=MALANG,jarkom umid=MALANG eth0=daemon,,,switch2 mem=64M &
+xterm -T MOJOKERTO -e linux ubd0=MOJOKERTO,jarkom umid=MOJOKERTO eth0=daemon,,,switch9 mem=64M &
+
+# Klien
+xterm -T MADIUN -e linux ubd0=MADIUN,jarkom umid=MADIUN eth0=daemon,,,switch5 mem=64M &
+xterm -T SIDOARJO -e linux ubd0=SIDOARJO,jarkom umid=SIDOARJO eth0=daemon,,,switch6 mem=64M &
+xterm -T GRESIK -e linux ubd0=GRESIK,jarkom umid=GRESIK eth0=daemon,,,switch8 mem=64M &
+xterm -T TUBAN -e linux ubd0=TUBAN,jarkom umid=TUBAN eth0=daemon,,,switch7 mem=64M &
+xterm -T JOMBANG -e linux ubd0=JOMBANG,jarkom umid=JOMBANG eth0=daemon,,,switch4 mem=64M &
+
+# Nyalain IP FORWARD DI SEMUA ROUTER
+`nano /etc/sysctl.conf`
+
+---------------------------------------------- INTERFACE ----------------------------------------------
+
+# ROUTER
+
+SURABAYA 1,2,3
+auto eth0
+iface eth0 inet static
+address 10.151.78.10
+netmask 255.255.255.252
+gateway 10.151.78.9
+
+auto eth1
+iface eth1 inet static
+address 192.168.0.17
+netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+address 10.151.79.17
+netmask 255.255.255.252
+
+auto eth3
+iface eth3 inet static
+address 192.168.0.41
+netmask 255.255.255.252
+
+BATU 6,7,8
+auto eth0
+iface eth0 inet static
+address 192.168.0.18
+netmask 255.255.255.252
+
+auto eth1
+iface eth1 inet static
+address 192.168.0.5
+netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+address 192.168.0.9
+netmask 255.255.255.252
+
+auto eth3
+iface eth3 inet static
+address 192.168.0.1
+netmask 255.255.255.252
+
+KEDIRI 3,4,5,9
+auto eth0
+iface eth0 inet static
+address 192.168.0.42
+netmask 255.255.255.252
+
+auto eth1
+iface eth1 inet static
+address 192.168.0.31
+netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+address 192.168.0.37
+netmask 255.255.255.252
+
+auto eth3 
+iface eth3 inet static
+address 10.151.79.21
+netmask 255.255.255.252
+
+# SERVER
+
+MOJOKERTO
+auto eth0
+iface eth0 inet static
+address 10.151.79.22
+netmask 255.255.255.252
+gateway 10.151.79.21
+
+MALANG
+auto eth0
+iface eth0 inet static
+address 10.151.79.18
+netmask 255.255.255.252
+gateway 10.151.79.17
+
+# CLIENT
+
+MADIUN
+auto eth0
+iface eth0 inet static
+address 192.168.0.38
+netmask 255.255.255.252
+gateway 192.168.0.37
+
+JOMBANG
+auto eth0
+iface eth0 inet static
+address 192.168.0.32
+netmask 255.255.255.252
+gateway 192.168.0.31
+
+TUBAN
+auto eth0
+iface eth0 inet static
+address 192.168.0.10
+netmask 255.255.255.252
+gateway 192.168.0.9
+
+GRESIK
+auto eth0
+iface eth0 inet static
+address 192.168.0.2
+netmask 255.255.255.252
+gateway 192.168.0.1
+
+SIDOARJO
+auto eth0
+iface eth0 inet static
+address 192.168.0.6
+netmask 255.255.255.252
+gateway 192.168.0.5
+
+---------------------------------------------- ROUTING ----------------------------------------------
