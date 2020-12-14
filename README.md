@@ -1,4 +1,4 @@
-# Semangat sisop
+# Semangat Jarkom
 
 ![GitHub Logo](/images/logo.png)
 [no 1](#no-1)
