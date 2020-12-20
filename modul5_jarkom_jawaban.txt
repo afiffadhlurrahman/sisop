@@ -1,0 +1,19 @@
+1. `iptables -A FORWARD -s 192.168.0.0/30 -j DROP -d 10.151.79.22`
+note :
+- untuk delete iptables rule pake : `iptables -D FORWARD 1`
+- 1 itu maksudnya rule ke-1
+- kalo FORWARD untuk di router
+- INPUT untuk di MOJO
+- OUTPUT untuk di GRESIK
+- untuk liat list `iptables -L`
+
+2. 
+
+
+3. `iptables -A INPUT -i eth0 -p tcp --dport 22 -j DROP`
+
+- Yg di malang jalanin nc -l -p 22 
+- trus yg mau ngakses malang jalanin nc <ip malang> 22
+- masukin apapun "ketik apapun" di yang mau akses malang
+
+4. 
